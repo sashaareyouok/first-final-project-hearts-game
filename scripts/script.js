@@ -2,166 +2,118 @@
 //canvas: document.createElement('canvas'),
 
 //start: function(){
-    //this.canvas.width=480;
-    //this.canvas.height=270;
-    //this.context = this.canvas.getContext('2d');
+//this.canvas.width=480;
+//this.canvas.height=270;
+//this.context = this.canvas.getContext('2d');
 
-    //this.ctx = canvas.getContex('2d');
+//this.ctx = canvas.getContex('2d');
 
-    //document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+//document.body.insertBefore(this.canvas, document.body.childNodes[0]);
 
-   //(TIME UPDATE) update my game every 10 m.sec
+//(TIME UPDATE) update my game every 10 m.sec
 
-    //this.interval = setInterval(updateGameZone,10);
+//this.interval = setInterval(updateGameZone,10);
 
 //},
-
 
 //clear: function () {
-    //this.context.clearRect (0,0, this.canvas.width, this.canvas.height,);
+//this.context.clearRect (0,0, this.canvas.width, this.canvas.height,);
 //},
-
 
 //score: function () {
-    //const points = Math.floor(this.frames / 20);
-    //this.context.font = '20px serif';
-    //this.context.fillstyle = 'bleu';
-    //this.context.fillText (`YOUR SCORE ${points}`, 200, 30);
+//const points = Math.floor(this.frames / 20);
+//this.context.font = '20px serif';
+//this.context.fillstyle = 'bleu';
+//this.context.fillText (`YOUR SCORE ${points}`, 200, 30);
 //},
-
-
-
 
 //};
 
-// player related 
+// player related
 
 //class Player {
-    //constructor(width,height,x,y,src){
+//constructor(width,height,x,y,src){
 
-    
-        //this.width=width;
-        //this.height=height;
+//this.width=width;
+//this.height=height;
 
-        
+//this.x = x;
+//this.y = y;
 
-        //this.x = x;
-        //this.y = y;
+//this.playerImage = this.createPlayer();
 
-        
+//this.speedX= 0;
+//this.speedY= 0;
 
-        //this.playerImage = this.createPlayer();
-        
-       
-        
+//}
 
-
-        //this.speedX= 0;
-        //this.speedY= 0;
-
-    //}
-
-
-// draw my user - this connected only to my user - main player 
+// draw my user - this connected only to my user - main player
 
 //update() {
 
-    //const ctx = myGameZone.context;
-
-   
+//const ctx = myGameZone.context;
 
 //ctx.drawImage(this.playerImage, this.x, this.y, this.width, this.height)
-    
-
 
 // }
- 
- //createPlayer (){
-    //const heart = new Image() ;
-    //heart.src = 'https://art.pixilart.com/5aefe2bd2dc747b.png';
-    //return heart
- //}
 
-// move my user 
+//createPlayer (){
+//const heart = new Image() ;
+//heart.src = 'https://art.pixilart.com/5aefe2bd2dc747b.png';
+//return heart
+//}
+
+// move my user
 
 //newPos = function () {
-    //this.x += this.speedX;
-    //this.y += this.speedY;
+//this.x += this.speedX;
+//this.y += this.speedY;
 //}
 
 //left(){
-    //return this.x;
+//return this.x;
 //}
 
 //right(){
-    //return this.x + this.width
+//return this.x + this.width
 //}
 
-
 //top(){
-    //return this.y;
+//return this.y;
 //}
 
 //bottom(){
-    //return this.y + this.height
+//return this.y + this.height
 //}
-
-
-
-
-
-
-
 
 //}
 
-// my main Player 
+// my main Player
 
 //const MainPlayer = new Player (100,100,50,110);
 
-
-
-
-
-// this part is animation part - draw everything - all functions that should work here 
+// this part is animation part - draw everything - all functions that should work here
 
 //function updateGameZone() {
-    //myGameZone.clear();
+//myGameZone.clear();
 
-    //MainPlayer.update();
-    //MainPlayer.newPos();
+//MainPlayer.update();
+//MainPlayer.newPos();
 
-    //heart.newPos();
-    //myGameZone.score();
-    //updateOb();
+//heart.newPos();
+//myGameZone.score();
+//updateOb();
 //}
-
-
-
-
-
-
-
-
-
 
 //myGameZone.start();
 
-
-
-
-
-// obstacles 
+// obstacles
 
 //const obstacles = [];
 
 //function updateOb () {
 
-
-
-    //myGameZone.frames += 2;
-
-
+//myGameZone.frames += 2;
 
 //obstacles.push(new Component (10, 30, 0, 0));
 
@@ -169,245 +121,198 @@
 
 //}
 
-
-
 class gameArea {
-    constructor(){
-        this.ctx = null;
-        this.bg =null;
-        this.player = null;
-        this.black = null;
-        this.blood = null
-    }
+  constructor() {
+    this.ctx = null;
+    this.bg = null;
+    this.player = null;
+    this.black = null;
+    this.blood = null;
+    this.frames = 0;
+  }
 
-    
+  startGame() {
+    const canvas = document.getElementById("canvas");
+    this.ctx = canvas.getContext("2d");
 
-    startGame(){
-        
-        const canvas = document.getElementById('canvas');
-        this.ctx = canvas.getContext ('2d');
+    const player = new Player(500, 500, 120, 300);
 
-        
+    this.player = player;
 
-        const player = new Player(500, 500,120 ,300 );
+    // const black = new blackHeart(400,400,130,100);
 
-        this.player = player;
+    // this.black = black;
 
-        const black = new blackHeart(400,400,130,100);
+    // const blood = new bloodHeart(400,400,50,30);
 
-        this.black = black;
+    // this.blood = blood;
 
-        const blood = new bloodHeart(400,400,50,30);
+    const backgroung = new Image();
 
-        this.blood = blood;
-        
-        const backgroung = new Image()
+    backgroung.src = "./images/IMG_1061.JPG";
 
-        backgroung.src = './images/IMG_1061.JPG'
+    backgroung.onload = () => {
+      this.bg = backgroung;
 
-        backgroung.onload = () => {
+    //   this.updateCanvas();
+      this.drawMainPlayer();
+      // this.drawBlack()
+      // this.drawBlood()
 
-            this.bg = backgroung
+      //this.score()
+    };
+  }
 
-            this.updateCanvas();
-            this.drawMainPlayer();
-            this.drawBlack()
-            this.drawBlood()
+  drawMainPlayer() {
+    this.ctx.drawImage(
+      this.player.img,
+      this.player.posX,
+      this.player.posY,
+      this.player.width,
+      this.player.height
+    );
+  }
 
-            //this.score()//??
+  // drawBlack(){
+  //     this.ctx.drawImage(
+  //         this.black.img,
+  //         this.black.posX,
+  //         this.black.posY,
+  //         this.black.width,
+  //         this.black.height
+  //     );
 
-        };
+  // }
 
-        
+  // drawBlood(){
+  //     this.ctx.drawImage(
+  //         this.blood.img,
+  //         this.blood.posX,
+  //         this.blood.posY,
+  //         this.blood.width,
+  //         this.blood.height
+  //     );
+  // }
 
-        
-       
-    }
+  score() {
+    const points = Math.floor(this.frames / 20); //?
+    this.ctx.font = "18px serif";
+    this.ctx.fillStyle = "deepskyblue";
+    this.ctx.fillText(`score: ${points}`, 700, 95); //position
+  }
 
-    drawMainPlayer(){
-        this.ctx.drawImage(
-            this.player.img, 
-            this.player.posX, 
-            this.player.posY, 
-            this.player.width,
-            this.player.height
-        );
-    }
+  break() {
+    clearInterval(this.interval);
+  }
 
-    drawBlack(){
-        this.ctx.drawImage(
-            this.black.img, 
-            this.black.posX, 
-            this.black.posY, 
-            this.black.width,
-            this.black.height
-        );
-
-    }
-
-    drawBlood(){
-        this.ctx.drawImage(
-            this.blood.img, 
-            this.blood.posX, 
-            this.blood.posY, 
-            this.blood.width,
-            this.blood.height
-        );
-    }
-
-
-    // score(){
-    //     const points = Math.floor(this.frames/20); //?
-    //     this.contex.font = '18 serif';
-    //     this.contex.fillstyle = 'black';
-    //     this.contex.fillText(`score: ${points}`, 350,200); //position 
-    // }
-
-    // break(){
-    //     clearInterval()
-    // }
-
-
-
-
-
-   updateCanvas(){
-    setInterval(()=> {
-    this.ctx.clearRect(0,0,500,600)
-    this.ctx.drawImage(this.bg,0,0,800,600);
-    this.drawMainPlayer()
-    this.drawBlack()
-    this.drawBlood()
-    //this.score()
-    }, 20)
-
-
-   }
-
+  updateCanvas() {
+    // setInterval(() => {
+      this.ctx.clearRect(0, 0, 500, 600);
+      this.ctx.drawImage(this.bg, 0, 0, 800, 600);
+      this.drawMainPlayer();
+      // this.drawBlack()
+      // this.drawBlood()
+      this.score()
+    // }, 20);
+  }
 }
 
 class Player {
-    constructor(width, height, posX, posY) {
-        this.width= width;
-        this.height=height;
-        this.posX=posX;
-        this.posY=posY;
-        this.img = this.createPlayer();
+  constructor(width, height, posX, posY) {
+    this.width = width;
+    this.height = height;
+    this.posX = posX;
+    this.posY = posY;
+    this.img = this.createPlayer();
+  }
 
-    }
+  createPlayer() {
+    const player = new Image();
 
-    createPlayer(){
-        const player = new Image();
+    player.src = "./images/IMG_1032.PNG";
 
-        player.src= './images/IMG_1032.PNG';
+    return player;
+  }
 
-        return player;
-
-    }
-
-    moveRight(){
+  moveRight() {
     this.posX += 15;
-    }
+  }
 
-
-   moveLeft(){
-
+  moveLeft() {
     this.posX -= 15;
+  }
 
-   }
-
-   moveTop(){
+  moveTop() {
     this.posY -= 15;
-   }
+  }
 
-   moveBottom(){
+  moveBottom() {
     this.posY += 15;
-   }
+  }
 
-
-   movePlayer(event){
-    switch(event){
-        case"ArrowRight":
-        this.moveRight()
+  movePlayer(event) {
+    switch (event) {
+      case "ArrowRight":
+        this.moveRight();
         break;
 
-        case"ArrowLeft":
-        this.moveLeft()
-        break;
-        
-        case"ArrowUp":
-        this.moveTop()
+      case "ArrowLeft":
+        this.moveLeft();
         break;
 
-        case"ArrowDown":
-        this.moveBottom()
+      case "ArrowUp":
+        this.moveTop();
         break;
 
-
+      case "ArrowDown":
+        this.moveBottom();
+        break;
     }
-   }
-
-
-
-
-
-
+  }
 }
 
 class blackHeart {
-    constructor(width, height, posX, posY) {
-        this.width= width;
-        this.height=height;
-        this.posX=posX;
-        this.posY=posY;
-        this.img = this.createBlack()
+  constructor(width, height, posX, posY) {
+    this.width = width;
+    this.height = height;
+    this.posX = posX;
+    this.posY = posY;
+    this.img = this.createBlack();
+  }
 
-}
-
-createBlack(){
+  createBlack() {
     const black = new Image();
 
-    black.src= './images/IMG_1131.PNG';
+    black.src = "./images/IMG_1131.PNG";
 
     return black;
-
-
-}
-
+  }
 }
 
 class bloodHeart {
-    constructor(width, height, posX, posY) {
-        this.width= width;
-        this.height=height;
-        this.posX=posX;
-        this.posY=posY;
-        this.img = this.createBlood()
+  constructor(width, height, posX, posY) {
+    this.width = width;
+    this.height = height;
+    this.posX = posX;
+    this.posY = posY;
+    this.img = this.createBlood();
+  }
 
-}
-
-createBlood(){
+  createBlood() {
     const blood = new Image();
 
-    blood.src= './images/IMG_1133.PNG';
+    blood.src = "./images/IMG_1133.PNG";
 
     return blood;
-
-
+  }
 }
-
-}
-
-
-
-
 
 // class Obstacles {
 //     constructor(width,height,posX,posY)
-        //this.width= width;
-        //this.height=height;
-        //this.posX=posX;
-        //this.posY=posY;
+//this.width= width;
+//this.height=height;
+//this.posX=posX;
+//this.posY=posY;
 // }
 
 // let myObstacles;
@@ -417,62 +322,87 @@ createBlood(){
 
 //     }
 
-
 const myObstacles = [];
 
-function updateObstacles() {
+function updateObstacles(game) {
+    // console.log('hello')
+  game.frames += 1;
+    // console.log(gameArea.frames)
+  for (i = 0; i < myObstacles.length; i++) {
+    moveObstacles(myObstacles[i], game)   
+  }
 
-gameArea.frames += 1;
+  if (game.frames % 150 === 0) {
+    //position of start
+    let x = 800;
 
- for (i = 0; i < myObstacles.length; i++) {
- myObstacles[i].x += -1;
- myObstacles[i].update();
+    let minWidth = 50;
+    let maxWidth = 300;
+    let width = Math.floor(
+      Math.random() * (maxWidth - minWidth + 1) + minWidth
+    );
+    let minGap = 60;
+    let maxGap = 180;
+    let gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap); 
 
- }
-    // spawning
- if (gameArea.frames % 120 === 0) {
- console.log(myObstacles)
+    const rightOb = {
+     width: x - width - gap, 
+     height: 20, 
+     x: width + gap,
+     y: 0
+    }
 
-        //position of start 
-let x = gameArea.canvas.width;
+    const leftOb = {
+     width:  width, 
+     height: 20, 
+     x: 0,
+     y: 0
+    }
 
-let minHeight = 20;
-let maxHeight = 200;
-let height = Math.floor(Math.random() * (maxHeight - minHeight + 1) + minHeight);
-let minGap = 50;
-let maxGap = 200;
-let gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap);
+    myObstacles.push(rightOb, leftOb)
+  }
+}
 
-      //right 
-myObstacles.push(new Component());
-      //left 
-myObstacles.push(new Component());
+// this.width = width;
+// this.height = height;
+// this.posX = posX;
+// this.posY = posY;
 
-   }
+let interval = null
 
- }
+function moveObstacles(obstacle, game) {
+    obstacle.y += 1;
+    game.ctx.filStyle = 'black'
+    game.ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height)
+    if (
+        (game.player.posX + game.player.width / 2 < obstacle.x + obstacle.width)
+        &&
+        (game.player.posX + game.player.width / 2> obstacle.x) 
+        &&
+        (game.player.posY + game.player.height / 2 < obstacle.y + obstacle.height)
+        &&
+        (game.player.posY + game.player.height / 2 > obstacle.y)
+        ) {
+            clearInterval(interval)
+            window.alert('TRY AGAIN!')
+            location.reload()
+        }
+}
 
-
-
-
-
-
-
-
-
- window.onload = ( ) => {
- document.getElementById('start-button').onclick = () => {
-    const game = new gameArea()
+window.onload = () => {
+  document.getElementById("start-button").onclick = () => {
+    const game = new gameArea();
     game.startGame();
 
-    document.addEventListener('keydown', (e) => {
-        game.player.movePlayer(e.key)
-    })
- };
-};
-
-
-
-
+    interval = setInterval(() => {
+        game.updateCanvas()
+        updateObstacles(game)
+    }, 15)
 
     
+
+    document.addEventListener("keydown", (e) => {
+      game.player.movePlayer(e.key);
+    });
+  };
+};
